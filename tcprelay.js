@@ -147,6 +147,15 @@ TCPRelay.prototype.getLogFile = function() {
 };
 
 TCPRelay.prototype.initLogger = function() {
+	log4js.configure({
+		appenders: [
+			{
+				type: "console"
+			}		
+		],
+		replaceConsole: true
+	});
+
 	if (this.logFile) {
 		log4js.loadAppender('file');
 		log4js.addAppender(log4js.appenders.file(this.logFile), this.getServerName());

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+  <title>Shadowsocks over websocket</title>
+  <!-- [Responsive website zoomed out to full width on mobile](http://stackoverflow.com/questions/19156510/responsive-website-zoomed-out-to-full-width-on-mobile) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://v3.bootcss.com/dist/css/bootstrap.min.css" />
+  <link href="data:text/css;charset=utf-8," data-href="https://v3.bootcss.com/dist/css/bootstrap-theme.min.css" rel="stylesheet"
+    id="bs-theme-stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+  <div id="container" class="container">
+    <h2>Shadowsocks over websocket log</h2>
+    <form class="form-inline">
+      <div class="form-group">
+        <label>Filter (support JS Regexp):&nbsp;</label>
+        <input id="filterRegexpText" type="text" class="form-control" placeholder="regexp"></input>
+        <button id="filterRegexpBtn" type="submit" class="btn btn-default">Refresh</button>
+      </div>
+    </form>
+    <br/>
+    <pre id="log" class="pre-scrollable"></pre>
+    <script type="text/javascript" src="/script.js" charset="utf-8"></script>
+  </div>
+</body>
+
+</html>

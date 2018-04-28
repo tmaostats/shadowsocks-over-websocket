@@ -25,9 +25,12 @@
   "dependencies": {
     "bufferutil": "^3.0.0",
     "commander": "^2.9.0",
+    "express": "^4.16.3",
     "log4js": "^1.1.1",
+    "path": "^0.12.7",
     "shadowsocks": "^1.5.3",
     "throng": "^4.0.0",
-    "ws": "^2.2.3"
+    "ws": "^2.2.3",
+    "xmlhttprequest": "^1.8.0"
   }
 }

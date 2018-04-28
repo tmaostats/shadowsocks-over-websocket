@@ -2,7 +2,10 @@ const TCPRelay = require('./tcprelay').TCPRelay;
 const server = require('commander');
 const constants = require('./constants');
 const throng = require('throng');
+const path = require('path');
+const express = require('express');
 const log4js = require('log4js');
+
 const logger = log4js.getLogger('server');
 
 server
@@ -12,7 +15,7 @@ server
     .option('-s --server-address <address>', 'server address')
     .option('-p --server-port <port>', 'server port, default: 8388')
     .option('--log-level <level>', 'log level(debug|info|warn|error|fatal)', /^(debug|info|warn|error|fatal)$/i, 'info')
-    .option('--log-file <file>', 'log file')
+    .option('--log-file <file>', 'log file', 'logs/server.log')
     .parse(process.argv);
 
 throng({
@@ -23,6 +26,7 @@ throng({
 
 function startMaster() {
     logger.info('started master');
+    startWeb();
 }
 
 function startWorker(id) {
@@ -38,4 +42,18 @@ function startWorker(id) {
     relay.setLogFile(server.logFile);
     relay.setServerName('server-' + id);
     relay.bootstrap();
+}
+
+function startWeb() {
+    var app = express();
+
+    app.set('port', (process.env.PORT || 5000)); 
+    app.use("/", express.static(path.join(__dirname)));
+    app.get("/", (request, response) => {
+      response.sendfile(path.join(__dirname, "index.html"))
+    });
+    
+    app.listen(app.get('port'), () => {
+      logger.info('Node web app is running on port', app.get('port'));
+    });
 }

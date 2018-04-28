@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Server",
+            "program": "${workspaceFolder}/server.js",
+            "args": [
+                // -m aes-256-cfb -k 000 -s 127.0.0.1 -p 8080
+                "-m", "aes-256-cfb", "-k", "000", "-s", "127.0.0.1", "-p", "8080"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Local",
+            "program": "${workspaceFolder}/local.js",
+            "args": [
+                // -m aes-256-cfb -k 000 -s 127.0.0.1 -p 8080 -l 10000
+                "-m", "aes-256-cfb", "-k", "000", "-s", "127.0.0.1", "-p", "8080", "-l", "1000"
+            ]
+        }
+    ]
+}
